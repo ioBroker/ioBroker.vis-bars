@@ -6,7 +6,7 @@ bars widget sets for ioBroker.vis
 
 ## Changelog
 
-### 0.0.2 (2015-08-12)
+### 0.0.3 (2015-08-12)
 - (bluefox) protect against double event: click and touchstart
 
 ### 0.0.1 (2015-08-05)

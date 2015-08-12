@@ -153,10 +153,7 @@ vis.binds.bars = {
 
             $htmlBtn.on('click touchstart', function () {
                 // Protect against two events
-                var now = (new Date()).getTime();
-                var lastClick = $(this).data('lc');
-                if (lastClick && now - lastClick < 50) return;
-                $(this).data('lc', now);
+                if (vis.detectBounce(this)) return;
 
                 var div__ = $(this).data('ctrl').div;
                 var onClick = $(div__).data('onClick');
