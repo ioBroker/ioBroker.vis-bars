@@ -1,7 +1,7 @@
 {
   "name": "iobroker.vis-bars",
   "description": "bars Widgets for ioBroker.vis",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": {
     "name": "bluefox",
     "email": "dogafox@gmail.com"
@@ -45,8 +45,7 @@
   },
   "main": "widgets/bars.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "node node_modules/grunt/lib/grunt prepublish"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "license": "MIT"
 }

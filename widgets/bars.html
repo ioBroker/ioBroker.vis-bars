@@ -30,9 +30,7 @@
 	    data-vis-draggable='<%== (this.data.attr('position')=='dockTop' || this.data.attr('position')=='dockBottom' || this.data.attr('position')=='dockRight' || this.data.attr('position')=='dockRight') ? '{"disabled":true}': '' %>'
 	    >
         <div class="vis-widget-body" style="overflow: visible"></div>
-        <%
-        	vis.binds.bars.init(this.data.wid, this.data, this.view, "tplBarFilter");
-        %>
+        <% vis.binds.bars.init(this.data.wid, this.data, this.view, "tplBarFilter"); %>
     </div>
 </script>
 
@@ -55,8 +53,6 @@
 	    data-vis-draggable='<%== (this.data.attr('position')=='dockTop' || this.data.attr('position')=='dockBottom' || this.data.attr('position')=='dockRight' || this.data.attr('position')=='dockRight') ? '{"disabled":true}': '' %>'
 	    >
         <div class="vis-widget-body" style="overflow: visible"></div>
-        <%
-        	vis.binds.bars.init(this.data.wid, this.data, this.view, "tplBarNavigator");
-        %>
+        <% vis.binds.bars.init(this.data.wid, this.data, this.view, "tplBarNavigator"); %>
     </div>
 </script>
