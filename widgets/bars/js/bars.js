@@ -42,11 +42,20 @@ if (vis.editMode) {
         "group_button_options": {"en": "Button options", "de": "Knopfeinstellungen", "ru": "Опции кнопки"},
         "group_style":      {"en": "Style",             "de": "Stil",               "ru": "Стиль"},
         "group_test":       {"en": "Test",              "de": "Test",               "ru": "Тест"},
-        "alwaysOpened":     {"en": "Always opened",     "de": "Immer auf",          "ru": "Всегда открыта"}
+        "alwaysOpened":     {"en": "Always opened",     "de": "Immer auf",          "ru": "Всегда открыта"},
+        "imagePaddingLeft": {"en": "Image padding left", "de": "Bildoffset von links", "ru": "Сдвиг картинки слева"},
+        "imagePaddingTop":  {"en": "Image padding top", "de": "Bildooffset von oben", "ru": "Сдвиг картинки сверху"}
     });
 }
 
 vis.binds.bars = {
+    version: "0.1.1",
+    showVersion: function () {
+        if (vis.binds.bars.version) {
+            console.log('Version vis-bars:' + vis.binds.bars.version);
+            vis.binds.bars.version = null;
+        }
+    },
     bType : {
         filters:    0,
         navigation: 1
@@ -78,15 +87,21 @@ vis.binds.bars = {
         var cssClass = opt.bStyleNormal;
         cssClass = cssClass || 'ui-state-default ui-button ui-widget';
 
-        var text = "<div id='" + wid + "_btn" + i + "' " + style + " class='" + cssClass + "'>\n";
+        var text = '<div id="' + wid + '_btn' + i + '" ' + style + ' class="' + cssClass + '">\n';
         var isTable = true || (opt['buttonsImage' + i] && opt['buttonsText' + i]);
         if (isTable) {
             text += '<table style="height:100%;width:100%" class="vis-no-spaces"><tr style="width:100%;height:100%" class="vis-no-spaces">\n';
-            text += "<td class='vis-no-spaces' style='width:" + opt.bOffset + "%; vertical-align: middle; text-align: " + opt.bImageAlign + "'>\n";
+            text += '<td class="vis-no-spaces" style="width:' + opt.bOffset + '%; vertical-align: middle; text-align: ' + opt.bImageAlign + '">\n';
         }
         if (opt['buttonsImage' + i]) {
-            text += "<img class='vis-no-spaces' src='" + ((opt['buttonsImage' + i].indexOf("/") !== -1) ?
-                    opt['buttonsImage' + i] : "img/" + opt['buttonsImage' + i]) +"' style='" + (opt.bWidth ? ("max-width:" + (opt.bWidth - 5) + "px;") : "") + (opt.bHeight ? ("max-height:"+(opt.bHeight - 5)+"px;") : "") + "' />\n";
+            text += '<img class="vis-no-spaces" src="' + ((opt['buttonsImage' + i].indexOf('/') !== -1) ?
+                    opt['buttonsImage' + i] : 'img/' + opt['buttonsImage' + i]) + '" style="' +
+                (opt.bWidth  ? ('max-width:'  + (opt.bWidth  - 5) + 'px;') : '') +
+                (opt.bHeight ? ('max-height:' + (opt.bHeight - 5) + 'px;') : '') +
+                'width: 100%;' +
+                'padding-left: ' + (opt.imagePaddingLeft || 0) + 'px;' +
+                'padding-top: '  + (opt.imagePaddingTop  || 0) + 'px;' +
+                '" />\n';
         }
         if (isTable) {
             text += "</td><td class='vis-no-spaces' style='width:" + (100 - opt.bOffset) + "%; text-align: " + opt.bTextAlign+"'>\n";
@@ -351,6 +366,7 @@ vis.binds.bars = {
         }
     },
     init: function(wid, options, view, wType) {
+        vis.binds.bars.showVersion();
         var $div = $('#' + wid);
         if (!$div.length) {
             setTimeout(function () {
