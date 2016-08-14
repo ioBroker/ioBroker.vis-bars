@@ -2,9 +2,19 @@
 ioBroker.vis-bars
 ============
 
+[![NPM version](http://img.shields.io/npm/v/iobroker.vis-bars.svg)](https://www.npmjs.com/package/iobroker.vis-bars)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.vis-bars.svg)](https://www.npmjs.com/package/iobroker.vis-bars)
+
+[![NPM](https://nodei.co/npm/iobroker.vis-bars.png?downloads=true)](https://nodei.co/npm/iobroker.vis-bars/)
+
 bars widget sets for ioBroker.vis
 
+![Example](img/widgets.png)
+
 ## Changelog
+
+### 0.1.2 (2016-08-14)
+- (bluefox) do not show ___settings view
 
 ### 0.1.1 (2015-09-25)
 - (bluefox) add scale and padding to icons
@@ -19,5 +29,5 @@ bars widget sets for ioBroker.vis
 - (bluefox) initial checkin
 
 ## License
- Copyright (c) 2013-2015 bluefox https://github.com/GermanBluefox
+ Copyright (c) 2013-2016 bluefox https://github.com/GermanBluefox
  MIT

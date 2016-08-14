@@ -1,7 +1,14 @@
 {
     "common": {
         "name":                     "vis-bars",
-        "version": "0.1.1",
+        "version": "0.1.2",
+		"news": {
+			"0.1.2": {
+				"en": "do not show ___settings view",
+				"de": "do not show ___settings view",
+				"ru": "do not show ___settings view"
+			}
+        },
         "title":                    "ioBroker Visualisation - bars Widgets",
         "desc": {
             "en":                   "bars Widgets for ioBroker.vis",

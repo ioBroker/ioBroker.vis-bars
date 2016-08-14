@@ -2,7 +2,7 @@
 /* jshint -W097 */// jshint strict:false
 /* jshint browser:true */
 
-"use strict";
+'use strict';
 
 // Add words for bars
 if (vis.editMode) {
@@ -49,7 +49,7 @@ if (vis.editMode) {
 }
 
 vis.binds.bars = {
-    version: "0.1.1",
+    version: "0.1.2",
     showVersion: function () {
         if (vis.binds.bars.version) {
             console.log('Version vis-bars:' + vis.binds.bars.version);
@@ -72,6 +72,7 @@ vis.binds.bars = {
         var visWidget = vis.views[vis.activeView].widgets[barsIntern.wid];
         if (visWidget === undefined) {
             for (var view in vis.views) {
+                if (view === '___settings') continue;
                 if (vis.views[view].widgets[barsIntern.wid]) {
                     visWidget = vis.views[view].widgets[barsIntern.wid];
                     break;
@@ -255,6 +256,7 @@ vis.binds.bars = {
                     var v = vis.activeView;
                     // find other view
                     for (var t in vis.views) {
+                        if (t === '___settings') continue;
                         if (t != v) break;
                     }
 
@@ -357,8 +359,9 @@ vis.binds.bars = {
         if ($tpl.attr('id') === 'tplBarNavigator') {
             var cnt = 0;
             for (var s in vis.views) {
+                if (s === '___settings') continue;
                 cnt++;
-                barsOptions['buttonsImage'  + cnt] = "";
+                barsOptions['buttonsImage'  + cnt] = '';
                 barsOptions['buttonsText'   + cnt] = s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
                 barsOptions['buttonsOption' + cnt] = s;
             }
