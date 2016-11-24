@@ -1,8 +1,13 @@
 {
     "common": {
         "name":                     "vis-bars",
-        "version": "0.1.2",
+        "version": "0.1.3",
 		"news": {
+			"0.1.3": {
+				"en": "Code formatting",
+				"de": "Code formatting",
+				"ru": "Code formatting"
+			},
 			"0.1.2": {
 				"en": "do not show ___settings view",
 				"de": "do not show ___settings view",

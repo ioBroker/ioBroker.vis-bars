@@ -129,9 +129,9 @@ vis.binds.bars = {
         var text = '';
         var calcH = '100%';//(barsOptions.bTheme && barsOptions.bSpace) ? 'calc(100% - ' + (barsOptions.bSpace * 2) + 'px)' : '100%';
         var calcW = '100%';//(barsOptions.bTheme && barsOptions.bSpace) ? 'calc(100% - ' + (barsOptions.bSpace * 2) + 'px)' : '100%';
-        if (barsOptions.bPosition == 'dockTop' || barsOptions.bPosition == 'dockBottom') {
+        if (barsOptions.bPosition === 'dockTop' || barsOptions.bPosition === 'dockBottom') {
             calcH = 'calc(100% - 10px)';
-        } else if (barsOptions.bPosition == 'dockLeft' || barsOptions.bPosition == 'dockRight') {
+        } else if (barsOptions.bPosition === 'dockLeft' || barsOptions.bPosition === 'dockRight') {
             calcW = 'calc(100% - 10px)';
         }
         text += '<table style="width:' + calcW + '; height: ' + calcH + '; ' + (barsOptions.bLayout === 'fixed' ? 'table-layout: fixed' : '') + '" class="vis-no-spaces">';
@@ -157,7 +157,7 @@ vis.binds.bars = {
                 }
             }
         }
-        text += "</table>";
+        text += '</table>';
 
         $div.html(text).css({'border-radius': 0, padding: 0});
 
@@ -180,7 +180,8 @@ vis.binds.bars = {
         // Remove previous class
         //if (div._oldAttr) $div.removeClass(div._oldAttr);
 
-        if (barsOptions.bPosition === 'floatHorizontal' ||
+        if (!barsOptions.bPosition ||
+            barsOptions.bPosition === 'floatHorizontal' ||
             barsOptions.bPosition === 'floatVertical') {
             $('#' + barsIntern.wid).show();
             $div.css({'position': 'absolute'});
@@ -199,7 +200,7 @@ vis.binds.bars = {
         }
         else {
             if (!$().sidebar) {
-                window.alert("Float types are not supported, while sidebars are not included");
+                window.alert('Float types are not supported, while sidebars are not included');
                 return;
             }
 
@@ -208,16 +209,16 @@ vis.binds.bars = {
 
             switch(barsOptions.bPosition) {
                 case 'dockTop':
-                    position = "top";
+                    position = 'top';
                     break;
                 case 'dockLeft':
-                    position = "left";
+                    position = 'left';
                     break;
                 case 'dockRight':
-                    position = "right";
+                    position = 'right';
                     break;
                 default:
-                    position = "bottom";
+                    position = 'bottom';
                     break;
             }
             var w = $div.width();
@@ -226,8 +227,8 @@ vis.binds.bars = {
 
             $div.sidebar({
                 position: position,
-                width:    $div.width()  + ((position == 'top' || position == 'bottom') ? 20 : 10),
-                height:   $div.height() + ((position == 'top' || position == 'bottom') ? 10 : 20),
+                width:    $div.width()  + ((position === 'top' || position === 'bottom') ? 20 : 10),
+                height:   $div.height() + ((position === 'top' || position === 'bottom') ? 10 : 20),
                 open:     'click',
                 close:    (barsOptions.alwaysOpened) ? 'none': undefined,
                 id:       barsIntern.wid,
@@ -257,7 +258,7 @@ vis.binds.bars = {
                     // find other view
                     for (var t in vis.views) {
                         if (t === '___settings') continue;
-                        if (t != v) break;
+                        if (t !== v) break;
                     }
 
                     vis.changeView (t,
@@ -277,7 +278,7 @@ vis.binds.bars = {
 
             $('#' + barsIntern.wid).hide();
             if (vis.editMode) {
-                if (vis.activeWidgets.indexOf(barsIntern.wid) != -1) {
+                if (vis.activeWidgets.indexOf(barsIntern.wid) !== -1) {
                     vis.showWidgetHelper(barsIntern.wid, true);
                 }
             }
@@ -297,7 +298,7 @@ vis.binds.bars = {
             var $htmlBtn = $('#' + barsIntern.wid + '_btn' + i);
             var isFound = false;
             for (var z = 0; z < newFilters.length; z++) {
-                if (barsOptions['buttonsOption' + i] == newFilters[z]) {
+                if (barsOptions['buttonsOption' + i] === newFilters[z]) {
                     isFound = true;
                     break;
                 }
@@ -326,7 +327,7 @@ vis.binds.bars = {
 
             if ($div.length) {
                 var barsIntern = $div.data('barsIntern');
-                if (barsIntern && barsIntern.view == view && barsIntern.wType == 'tplBarFilter') {
+                if (barsIntern && barsIntern.view === view && barsIntern.wType === 'tplBarFilter') {
                     vis.binds.bars.setState(div, newFilter);
                 }
             }
@@ -342,7 +343,7 @@ vis.binds.bars = {
                 barsOptions.buttonsText1   = _('All');
                 barsOptions.buttonsOption1 = '';
                 for (var x = 0; x < filter.length; x++) {
-                    barsOptions['buttonsImage'  + (x + 2)] = "";
+                    barsOptions['buttonsImage'  + (x + 2)] = '';
                     barsOptions['buttonsText'   + (x + 2)] = filter[x].charAt(0).toUpperCase() + filter[x].slice(1).toLowerCase();
                     barsOptions['buttonsOption' + (x + 2)] = filter[x];
                 }
@@ -352,13 +353,14 @@ vis.binds.bars = {
                 barsOptions.buttonsImage1  = '';
                 barsOptions.buttonsText1   = _('Caption');
                 barsOptions.buttonsOption1 = '';
-                barsOptions.bCount = 1;
+                barsOptions.bCount         = 1;
             }
         }
         else
         if ($tpl.attr('id') === 'tplBarNavigator') {
             var cnt = 0;
             for (var s in vis.views) {
+                if (!vis.views.hasOwnProperty(s)) continue;
                 if (s === '___settings') continue;
                 cnt++;
                 barsOptions['buttonsImage'  + cnt] = '';
@@ -375,11 +377,10 @@ vis.binds.bars = {
             setTimeout(function () {
                 vis.binds.bars.init(wid, options, view, wType);
             }, 100);
-            return;
         } else {
-            var timer = $('#' + wid).data('timer');
+            var timer = $div.data('timer');
             if (timer) clearTimeout(timer);
-            $('#' + wid).data('timer', setTimeout(function () {
+            $div.data('timer', setTimeout(function () {
                 vis.binds.bars._init(wid, options, view, wType);
             }, 100));
         }
@@ -392,20 +393,20 @@ vis.binds.bars = {
             }, 100);
             return;
         } else {
-            var timer = $('#' + wid).data('timer');
+            var timer = $div.data('timer');
             if (!timer) {
-                $('#' + wid).data('timer', function () {
+                $div.data('timer', function () {
                     vis.binds.bars.init(wid, options, view, wType);
                 });
             } else {
-                $('#' + wid).data('timer', null);
+                $div.data('timer', null);
             }
         }
 
         if (!$div.find('.vis-widget-body').length) {
             $div.append('<div class="vis-widget-body" style="overflow: visible"></div>');
         }
-        $div = $('#' + wid + ' .vis-widget-body');
+        $div = $div.find('.vis-widget-body');
 
         var barsIntern = {
             wid:        wid,
@@ -417,7 +418,7 @@ vis.binds.bars = {
 
         var isFound = false;
         for (var g = 0; g < vis.binds.bars.created.length; g++) {
-            if (vis.binds.bars.created[g] == wid) {
+            if (vis.binds.bars.created[g] === wid) {
                 isFound = true;
                 break;
             }
@@ -524,7 +525,7 @@ vis.binds.bars = {
                         }
 
                         // install filters handler
-                        if (barsIntern.wType == 'tplBarFilter') {
+                        if (barsIntern.wType === 'tplBarFilter') {
                             var filter = "";
                             for (var w = 1; w <= barsOptions.bCount; w++) {
                                 var $btn = $('#' + barsIntern.wid + '_btn' + w);
@@ -572,7 +573,7 @@ if (vis.editMode) {
             try {
                 var baroptions = JSON.parse(widget.data.baroptions);
                 for (var opt in baroptions) {
-                    if (opt == 'position') {
+                    if (opt === 'position') {
                         switch (baroptions[opt]) {
                             case '0':
                             case 0:
