@@ -49,7 +49,7 @@ if (vis.editMode) {
 }
 
 vis.binds.bars = {
-    version: "0.1.2",
+    version: "0.1.3",
     showVersion: function () {
         if (vis.binds.bars.version) {
             console.log('Version vis-bars:' + vis.binds.bars.version);
