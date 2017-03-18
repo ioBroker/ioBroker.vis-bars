@@ -49,7 +49,7 @@ if (vis.editMode) {
 }
 
 vis.binds.bars = {
-    version: "0.1.3",
+    version: "0.1.4",
     showVersion: function () {
         if (vis.binds.bars.version) {
             console.log('Version vis-bars:' + vis.binds.bars.version);
@@ -83,7 +83,7 @@ vis.binds.bars = {
         return visWidget;
     },
     drawButton: function (wid, i, opt) {
-        //var style = "style='" + (opt.bWidth ? ("width:" + opt.bWidth + "px;") : "") + (opt.bHeight ? ("height:" + opt.bHeight + "px;") : "") + "'";
+        //var style = "style='" + (opt.bWidth ? ("width:" + opt.bWidth + "px;") : '') + (opt.bHeight ? ("height:" + opt.bHeight + "px;") : '') + "'";
         var style = 'style="height:100%;width: 100%"';//'style="height:100%; width: 100%"';
         var cssClass = opt.bStyleNormal;
         cssClass = cssClass || 'ui-state-default ui-button ui-widget';
@@ -105,15 +105,15 @@ vis.binds.bars = {
                 '" />\n';
         }
         if (isTable) {
-            text += "</td><td class='vis-no-spaces' style='width:" + (100 - opt.bOffset) + "%; text-align: " + opt.bTextAlign+"'>\n";
+            text += '</td><td class="vis-no-spaces" style="width: ' + (100 - opt.bOffset) + '%; text-align: ' + opt.bTextAlign + '">\n';
         }
         if (opt['buttonsText' + i]) {
-            text += "<span style='text-align: " + opt.bTextAlign + "'>" + opt['buttonsText' + i] + "</span>\n";
+            text += '<span style="text-align: ' + opt.bTextAlign + '">' + opt['buttonsText' + i] + '</span>\n';
         }
         if (isTable) {
-            text += "</td></tr></table>\n";
+            text += '</td></tr></table>\n';
         }
-        text += "</div>\n";
+        text += '</div>\n';
         return text;
     },
     draw: function($div) {
@@ -245,11 +245,11 @@ vis.binds.bars = {
 
                 if (barsIntern.wType === 'tplBarFilter') {
                     // Hide all
-                    vis.changeFilter("$", barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
+                    vis.changeFilter(null, '$', barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
 
                     // Show all
                     setTimeout (function () {
-                        vis.changeFilter ("", barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
+                        vis.changeFilter (null, '', barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
                     }, 500 + parseInt(barsOptions.bShowEffectMs, 10));
                 }
                 else
@@ -459,7 +459,7 @@ vis.binds.bars = {
                         }
                     }
                     // Set active filter
-                    vis.changeFilter(barsOptions.bValue, barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
+                    vis.changeFilter(null, barsOptions.bValue, barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
                 }
             }
             else
@@ -526,7 +526,7 @@ vis.binds.bars = {
 
                         // install filters handler
                         if (barsIntern.wType === 'tplBarFilter') {
-                            var filter = "";
+                            var filter = '';
                             for (var w = 1; w <= barsOptions.bCount; w++) {
                                 var $btn = $('#' + barsIntern.wid + '_btn' + w);
                                 if ($btn.length && $btn.data('state')) {
@@ -534,7 +534,7 @@ vis.binds.bars = {
                                         filter += (!filter ? '' : ',') + barsOptions['buttonsOption' + w];
                                     } else {
                                         // If disable all filters
-                                        filter = "";
+                                        filter = '';
                                         for (var q = 1; q <= barsOptions.bCount; q++) {
                                             $btn = $('#' + barsIntern.wid + '_btn' + q);
                                             $btn.data('state', false);
@@ -548,7 +548,7 @@ vis.binds.bars = {
                                 }
                             }
 
-                            vis.changeFilter(filter, barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
+                            vis.changeFilter(null, filter, barsOptions.bShowEffect, barsOptions.bShowEffectMs, barsOptions.bHideEffect, barsOptions.bHideEffectMs);
                         }
                     }
                 });
@@ -573,7 +573,7 @@ if (vis.editMode) {
             try {
                 var baroptions = JSON.parse(widget.data.baroptions);
                 for (var opt in baroptions) {
-                    if (opt === 'position') {
+                    if (baroptions.hasOwnProperty(opt) && opt === 'position') {
                         switch (baroptions[opt]) {
                             case '0':
                             case 0:

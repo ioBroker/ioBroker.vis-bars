@@ -12,6 +12,8 @@ bars widget sets for ioBroker.vis
 ![Example](img/widgets.png)
 
 ## Changelog
+### 0.1.4 (2017-03-18)
+- (bluefox) fixes for new vis 0.12.x
 
 ### 0.1.3 (2016-11-24)
 - (bluefox) Code formatting
