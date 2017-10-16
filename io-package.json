@@ -1,52 +1,61 @@
 {
     "common": {
-        "name":                     "vis-bars",
+        "name": "vis-bars",
         "version": "0.1.4",
-		"news": {
-			"0.1.4": {
-				"en": "Fixes for new vis 0.12.x",
-				"de": "Änderungen für neue vis 0.12.x",
-				"ru": "Изменения для новой версии vis 0.12.x"
-			},
-			"0.1.3": {
-				"en": "Code formatting",
-				"de": "Code formatting",
-				"ru": "Code formatting"
-			},
-			"0.1.2": {
-				"en": "do not show ___settings view",
-				"de": "do not show ___settings view",
-				"ru": "do not show ___settings view"
-			}
+        "news": {
+            "0.1.4": {
+                "en": "Fixes for new vis 0.12.x",
+                "de": "Änderungen für neue vis 0.12.x",
+                "ru": "Изменения для новой версии vis 0.12.x"
+            },
+            "0.1.3": {
+                "en": "Code formatting",
+                "de": "Code formatting",
+                "ru": "Code formatting"
+            },
+            "0.1.2": {
+                "en": "do not show ___settings view",
+                "de": "do not show ___settings view",
+                "ru": "do not show ___settings view"
+            }
         },
-        "title":                    "ioBroker Visualisation - bars Widgets",
+        "title": "ioBroker Visualisation - bars Widgets",
         "desc": {
-            "en":                   "bars Widgets for ioBroker.vis",
-            "de":                   "bars Widgets für ioBroker.vis",
-            "ru":                   "bars Widgets для ioBroker.vis"
+            "en": "bars Widgets for ioBroker.vis",
+            "de": "bars Widgets für ioBroker.vis",
+            "ru": "bars Widgets для ioBroker.vis"
         },
-        "platform":                 "Javascript/Node.js",
-        "loglevel":                 "info",
-        "icon":                     "bars.png",
-        "enabled":                  true,
-        "mode":                     "once",
-        "extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.vis-bars/master/admin/bars.png",
-        "keywords":                 ["bars", "vis", "GUI", "graphical", "scada"],
-        "readme":                   "https://github.com/ioBroker/ioBroker.vis-bars/blob/master/README.md",
+        "platform": "Javascript/Node.js",
+        "loglevel": "info",
+        "icon": "bars.png",
+        "enabled": true,
+        "mode": "once",
+        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.vis-bars/master/admin/bars.png",
+        "keywords": [
+            "bars",
+            "vis",
+            "GUI",
+            "graphical",
+            "scada"
+        ],
+        "readme": "https://github.com/ioBroker/ioBroker.vis-bars/blob/master/README.md",
         "authors": [
             "bluefox <dogafox@gmail.com>"
         ],
-        "localLink":                "%web_protocol%://%ip%:%web_port%/vis/edit.html",
-        "license":                  "MIT",
-        "dependencies":             ["vis"],
-        "onlyWWW":                  true,
-        "singleton":                true,
-        "type":                     "vis",
-		"restartAdapters":          ["vis"]
+        "localLink": "%web_protocol%://%ip%:%web_port%/vis/edit.html",
+        "license": "MIT",
+        "dependencies": [
+            "vis"
+        ],
+        "onlyWWW": true,
+        "singleton": true,
+        "type": "visualization-widgets",
+        "restartAdapters": [
+            "vis"
+        ]
     },
     "native": {
-        "dependencies":          []
+        "dependencies": []
     },
-    "instanceObjects": [
-    ]
+    "instanceObjects": []
 }
